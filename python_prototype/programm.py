@@ -30,7 +30,8 @@ def message_handler(input_data):
 
     # Процесс формирование сообщения результата. ~Сиподобный массив фиксированной длины.
     result_message = [0xFF, 0x02, 0x14, 0x00, 0x00]
-    result_message[3] = message[2] # Только первый байт команды.
+    command = (message[2] << 7) + message[3]
+    result_message[3] = command & 0xFF # Только младший байт команды.
     result_message[4] = crc(result_message, 4)
 
     print(f"\nНовое сообщение {bytes(result_message)}")
