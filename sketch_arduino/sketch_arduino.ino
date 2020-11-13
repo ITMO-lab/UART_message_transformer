@@ -9,8 +9,13 @@ SoftwareSerial BleSerial(2, 3); // RX,TX
 const int input_message_length = 5;
 const int output_message_length = 5;
 
-const uint32_t Serial_send_delay = 100;// milliseconds.
 
+/* This value determines the size of the forwarding message queue. 
+ *  If there is not enough space for a new message, 
+ *  it will be dropped. When space becomes available, 
+ *  the newest message will be recorded.
+ */
+const int priority_queue_max_size = 16;
 
 /* Amount of messages in the queue for conversion and sending.
  * In case of memory overflow, reduce.
@@ -18,12 +23,29 @@ const uint32_t Serial_send_delay = 100;// milliseconds.
  */
 const int Ble_data_size = 16;
 
+const uint64_t Serial_send_delay = 100; // milliseconds.
+
 
 // Input message buffer.
 byte Ble_messages[Ble_data_size];
 
 // Pointer to the end of the buffer. (Simplest dynamic array)
 int Ble_input_pointer = 0;
+
+
+/*
+ * Solving problem with timer overflow after ~3 years.
+ * Now it will survive our galaxy.
+ */
+uint64_t current_time = 0;
+uint32_t prev_HAL_Tick = 0;
+uint64_t get_millis(){
+  uint32_t current_HAL_Tick = HAL_GetTick();
+  uint32_t add_time = current_HAL_Tick - prev_HAL_Tick;
+  prev_HAL_Tick = current_HAL_Tick;
+  current_time += (uint64_t) add_time;
+  return current_time;
+}
 
 
 /* Function for calculating hash sum.
@@ -41,6 +63,10 @@ char crc(unsigned char *pcBlock, int len)
     return crc;
 }
 
+// Comparator for priority queue
+auto cmp = [](SendMessageRequest a, SendMessageRequest b) { return a.get_send_time() > b.get_send_time(); };
+// Queue of requests to send messages.
+std::priority_queue<SendMessageRequest, std::deque<SendMessageRequest>, decltype(cmp)> Ble_send_queue(cmp);
 
 /*
  * Сonvertint an input message to an output message. 
@@ -54,7 +80,8 @@ std::vector<byte> message_converter(std::vector<byte> input_message){
   result[3] = (input_message[2] << 7) | input_message[3];
   byte result_for_hash[4];
   std::copy(result.begin(), result.end(), result_for_hash);
-  result[4] = crc(result_for_hash, 4);
+  //result[4] = crc(result_for_hash, 4);
+  result[4] = (byte)Ble_send_queue.size();
   return result;
 }
 
@@ -75,16 +102,12 @@ void Ble_update_sym(byte symbol){
 }
 
 
-// Queue of requests to send messages.
-std::priority_queue<SendMessageRequest, std::deque<SendMessageRequest>, decltype(cmp)> Ble_send_queue(cmp);
-// Comparator for priority queue
-auto cmp = [](SendMessageRequest a, SendMessageRequest b) { return a.get_send_time() > b.get_send_time(); };
 
 /*
  * Priority queue for requests to send messages update operation.
  */
 void Ble_update_send_queue(){
-  uint32_t current_time = HAL_GetTick();
+  current_time = get_millis();
   std::vector<byte> message_to_send(input_message_length);
   for (int i = 0; i < input_message_length; i++){
     message_to_send[i] = Ble_messages[i];
@@ -97,10 +120,13 @@ void Ble_update_send_queue(){
   if (hash_fast != message_to_send[4]){
     return;
   }
-  
+  if (Ble_send_queue.size() > priority_queue_max_size){
+    return;
+  }
+  std::vector<byte> message_to_send_converted = message_converter(message_to_send);
   Ble_send_queue.push(SendMessageRequest(message_to_send, current_time, true));
-  for (uint32_t i = 0; i < 3; i++){
-    Ble_send_queue.push(SendMessageRequest(message_to_send, i*Serial_send_delay + current_time, false));
+  for (uint64_t i = 0; i < 3; i++){
+    Ble_send_queue.push(SendMessageRequest(message_to_send_converted, i*Serial_send_delay + current_time, false));
   }
   Ble_input_pointer = 0;
 }
@@ -111,9 +137,7 @@ void Ble_update_send_queue(){
  * from the priority queue, to which the time has come.
  */
 void Ble_send_one_message(){
-  if (Ble_send_queue.empty())
-    return;
-  uint32_t current_time = HAL_GetTick();
+  current_time = get_millis();
   SendMessageRequest message_request = Ble_send_queue.top();
   if (current_time < message_request.get_send_time()){
     return;

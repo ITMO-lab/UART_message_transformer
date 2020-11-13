@@ -34,7 +34,7 @@ async def run(address):
             message = new_message()
             await client.write_gatt_char("0000ffe1-0000-1000-8000-00805f9b34fb", message)
             s.sendto(bytes([*message]), ('localhost', 8082))
-            await asyncio.sleep(3)
+            await asyncio.sleep(0.001)
         client.disconnect()
 
 
