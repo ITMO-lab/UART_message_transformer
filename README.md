@@ -32,17 +32,20 @@
 | 5           | Контрольная сумма первых 4 байт. Алгоритм приведен ниже. |
 
 **Функция расчета CRC**:
-`char crc(unsigned char *pcBlock, int len)`
-`{`
-    `unsigned char crc = 0xFF;`
-    `unsigned int i;`
-    `while (len--)`
-    `{`
-        `crc ^= *pcBlock++;`
-        `for (i = 0; i < 8; i++) crc = crc & 0x80 ? (crc << 1) ^ 0x31 : crc << 1;`
-    `}`
-    `return crc;`
-`}`
+
+```c++
+char crc(unsigned char *pcBlock, int len)
+{
+    unsigned char crc = 0xFF;
+    unsigned int i;
+    while (len--)
+    {
+        crc ^= *pcBlock++;
+        for (i = 0; i < 8; i++) crc = crc & 0x80 ? (crc << 1) ^ 0x31 : crc << 1;
+    }
+    return crc;
+}
+```
 
 Полученный массив из 5 байт необходимо отправить по **Uart** порту **3 раза** с промежутком **100мс**.
 
