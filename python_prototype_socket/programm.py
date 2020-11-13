@@ -40,19 +40,15 @@ def message_handler(input_data):
     return bytes(result_message)
 
 
-s1 = socket.socket()
-s1.bind(('', 8001))
-s1.listen(1)
+s1 = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+s1.bind(('localhost', 8082))
+s2 = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 while True:
-    conn, addr = s1.accept()
-    data = conn.recv(1024)
+    data, addr = s1.recvfrom(1024)
     if not data or data == b'':
         sleep(0.001)
         continue
-    s2 = socket.socket()
-    s2.connect(('localhost', 8002))
     message_to_send = message_handler(data)
     if message_to_send is not None:
-        s2.send(message_to_send)
-    s2.close()
-conn.close()
+        s2.sendto(message_to_send, ('localhost', 8083))
+
