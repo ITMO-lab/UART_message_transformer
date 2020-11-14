@@ -20,7 +20,7 @@ uint64\+\_\+t \hyperlink{classBleConverter_a52ed15bca443802f8c3c5e2fdde0b82e}{ge
 \begin{DoxyCompactList}\small\item\em Функция, возвращающая количество миллисекунд с момента старта программы.  Решение проблемы с переполнением таймера примерно после 3 лет непрерывной работы. Теперь этот код переживёт плату, на которой запущен. \end{DoxyCompactList}\item 
 char \hyperlink{classBleConverter_a232fa1dd4c43d37201656235bde26173}{crc} (unsigned char $\ast$pc\+Block, int len)
 \begin{DoxyCompactList}\small\item\em Функция для вычисления хэш суммы.  Логика была задана изначально. \end{DoxyCompactList}\item 
-std\+::vector$<$ byte $>$ \hyperlink{classBleConverter_a3f14e0e1617f018a63ab32f65cd525a5}{message\+\_\+converter} (std\+::vector$<$ byte $>$ input\+\_\+message)
+std\+::vector$<$ byte $>$ \hyperlink{classBleConverter_a29176df3aa77e74b459135d6e4db195e}{message\+\_\+converter} (std\+::vector$<$ byte $>$ input\+\_\+message)
 \begin{DoxyCompactList}\small\item\em Функция для преобразования входящего сообщения в выходящее.  Вынесена отдельно с целью удобства внесения изменений. \end{DoxyCompactList}\item 
 void \hyperlink{classBleConverter_a9c8be58a0630f113cc98d1163aebc0fa}{Ble\+\_\+update\+\_\+sym} (byte symbol)
 \begin{DoxyCompactList}\small\item\em Обработчик новых символов.  Сделано отдельной функцией с целью экономии процессорного времени. \end{DoxyCompactList}\item 
@@ -73,7 +73,7 @@ std\+::priority\+\_\+queue$<$ \hyperlink{classSendMessageRequest}{Send\+Message\
 \index{Ble\+Converter@{Ble\+Converter}!Ble\+Converter@{Ble\+Converter}}
 \index{Ble\+Converter@{Ble\+Converter}!Ble\+Converter@{Ble\+Converter}}
 \subsubsection{\texorpdfstring{Ble\+Converter()}{BleConverter()}}
-{\footnotesize\ttfamily Ble\+Converter\+::\+Ble\+Converter (\begin{DoxyParamCaption}\item[{int}]{Serial\+Baudrate,  }\item[{int}]{Ble\+Baudrate,  }\item[{int}]{Ble\+Rx\+Pin,  }\item[{int}]{Ble\+Tx\+Pin }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily Ble\+Converter\+::\+Ble\+Converter (\begin{DoxyParamCaption}\item[{int}]{Serial\+Baudrate,  }\item[{int}]{Ble\+Baudrate,  }\item[{int}]{Ble\+Rx\+Pin,  }\item[{int}]{Ble\+Tx\+Pin }\end{DoxyParamCaption})}
 
 
 
@@ -97,7 +97,7 @@ std\+::priority\+\_\+queue$<$ \hyperlink{classSendMessageRequest}{Send\+Message\
 \index{Ble\+Converter@{Ble\+Converter}!Ble\+\_\+update\+\_\+sym@{Ble\+\_\+update\+\_\+sym}}
 \index{Ble\+\_\+update\+\_\+sym@{Ble\+\_\+update\+\_\+sym}!Ble\+Converter@{Ble\+Converter}}
 \subsubsection{\texorpdfstring{Ble\+\_\+update\+\_\+sym()}{Ble\_update\_sym()}}
-{\footnotesize\ttfamily void Ble\+Converter\+::\+Ble\+\_\+update\+\_\+sym (\begin{DoxyParamCaption}\item[{byte}]{symbol }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+{\footnotesize\ttfamily void Ble\+Converter\+::\+Ble\+\_\+update\+\_\+sym (\begin{DoxyParamCaption}\item[{byte}]{symbol }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
@@ -112,7 +112,7 @@ std\+::priority\+\_\+queue$<$ \hyperlink{classSendMessageRequest}{Send\+Message\
 \index{Ble\+Converter@{Ble\+Converter}!crc@{crc}}
 \index{crc@{crc}!Ble\+Converter@{Ble\+Converter}}
 \subsubsection{\texorpdfstring{crc()}{crc()}}
-{\footnotesize\ttfamily char Ble\+Converter\+::crc (\begin{DoxyParamCaption}\item[{unsigned char $\ast$}]{pc\+Block,  }\item[{int}]{len }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+{\footnotesize\ttfamily char Ble\+Converter\+::crc (\begin{DoxyParamCaption}\item[{unsigned char $\ast$}]{pc\+Block,  }\item[{int}]{len }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
@@ -132,7 +132,7 @@ std\+::priority\+\_\+queue$<$ \hyperlink{classSendMessageRequest}{Send\+Message\
 \index{Ble\+Converter@{Ble\+Converter}!get\+\_\+millis@{get\+\_\+millis}}
 \index{get\+\_\+millis@{get\+\_\+millis}!Ble\+Converter@{Ble\+Converter}}
 \subsubsection{\texorpdfstring{get\+\_\+millis()}{get\_millis()}}
-{\footnotesize\ttfamily uint64\+\_\+t Ble\+Converter\+::get\+\_\+millis (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+{\footnotesize\ttfamily uint64\+\_\+t Ble\+Converter\+::get\+\_\+millis (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
@@ -141,11 +141,11 @@ std\+::priority\+\_\+queue$<$ \hyperlink{classSendMessageRequest}{Send\+Message\
 \begin{DoxyReturn}{Returns}
 uint64\+\_\+t Миллисекунды с момента старта программы. 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classBleConverter_a3f14e0e1617f018a63ab32f65cd525a5}\label{classBleConverter_a3f14e0e1617f018a63ab32f65cd525a5}} 
+\mbox{\Hypertarget{classBleConverter_a29176df3aa77e74b459135d6e4db195e}\label{classBleConverter_a29176df3aa77e74b459135d6e4db195e}} 
 \index{Ble\+Converter@{Ble\+Converter}!message\+\_\+converter@{message\+\_\+converter}}
 \index{message\+\_\+converter@{message\+\_\+converter}!Ble\+Converter@{Ble\+Converter}}
 \subsubsection{\texorpdfstring{message\+\_\+converter()}{message\_converter()}}
-{\footnotesize\ttfamily std\+::vector$<$byte$>$ Ble\+Converter\+::message\+\_\+converter (\begin{DoxyParamCaption}\item[{std\+::vector$<$ byte $>$}]{input\+\_\+message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+{\footnotesize\ttfamily std\+::vector$<$ byte $>$ Ble\+Converter\+::message\+\_\+converter (\begin{DoxyParamCaption}\item[{std\+::vector$<$ byte $>$}]{input\+\_\+message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
@@ -161,6 +161,7 @@ uint64\+\_\+t Миллисекунды с момента старта прогр
 \end{DoxyReturn}
 
 
-The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
+Ble\+Converter.\+h\item 
 Ble\+Converter.\+cpp\end{DoxyCompactItemize}

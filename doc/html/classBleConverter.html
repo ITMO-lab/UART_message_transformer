@@ -93,9 +93,9 @@ Protected Member Functions</h2></td></tr>
 <tr class="memitem:a232fa1dd4c43d37201656235bde26173"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBleConverter.html#a232fa1dd4c43d37201656235bde26173">crc</a> (unsigned char *pcBlock, int len)</td></tr>
 <tr class="memdesc:a232fa1dd4c43d37201656235bde26173"><td class="mdescLeft">&#160;</td><td class="mdescRight">Функция для вычисления хэш суммы.  Логика была задана изначально.  <a href="#a232fa1dd4c43d37201656235bde26173">More...</a><br /></td></tr>
 <tr class="separator:a232fa1dd4c43d37201656235bde26173"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3f14e0e1617f018a63ab32f65cd525a5"><td class="memItemLeft" align="right" valign="top">std::vector&lt; byte &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBleConverter.html#a3f14e0e1617f018a63ab32f65cd525a5">message_converter</a> (std::vector&lt; byte &gt; input_message)</td></tr>
-<tr class="memdesc:a3f14e0e1617f018a63ab32f65cd525a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Функция для преобразования входящего сообщения в выходящее.  Вынесена отдельно с целью удобства внесения изменений.  <a href="#a3f14e0e1617f018a63ab32f65cd525a5">More...</a><br /></td></tr>
-<tr class="separator:a3f14e0e1617f018a63ab32f65cd525a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a29176df3aa77e74b459135d6e4db195e"><td class="memItemLeft" align="right" valign="top">std::vector&lt; byte &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBleConverter.html#a29176df3aa77e74b459135d6e4db195e">message_converter</a> (std::vector&lt; byte &gt; input_message)</td></tr>
+<tr class="memdesc:a29176df3aa77e74b459135d6e4db195e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Функция для преобразования входящего сообщения в выходящее.  Вынесена отдельно с целью удобства внесения изменений.  <a href="#a29176df3aa77e74b459135d6e4db195e">More...</a><br /></td></tr>
+<tr class="separator:a29176df3aa77e74b459135d6e4db195e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9c8be58a0630f113cc98d1163aebc0fa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBleConverter.html#a9c8be58a0630f113cc98d1163aebc0fa">Ble_update_sym</a> (byte symbol)</td></tr>
 <tr class="memdesc:a9c8be58a0630f113cc98d1163aebc0fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Обработчик новых символов.  Сделано отдельной функцией с целью экономии процессорного времени.  <a href="#a9c8be58a0630f113cc98d1163aebc0fa">More...</a><br /></td></tr>
 <tr class="separator:a9c8be58a0630f113cc98d1163aebc0fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -158,9 +158,6 @@ std::priority_queue&lt; <a class="el" href="classSendMessageRequest.html">SendMe
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">BleConverter::BleConverter </td>
@@ -192,11 +189,6 @@ std::priority_queue&lt; <a class="el" href="classSendMessageRequest.html">SendMe
           <td></td><td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>Операция инициализации преобразователя BLE сообщений в Serial.  Она была вынесенв из setup() в конструктор с целью Упрощения процесса использования кода. </p>
@@ -232,7 +224,7 @@ std::priority_queue&lt; <a class="el" href="classSendMessageRequest.html">SendMe
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span></span>  </td>
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -276,7 +268,7 @@ std::priority_queue&lt; <a class="el" href="classSendMessageRequest.html">SendMe
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span></span>  </td>
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -311,7 +303,7 @@ std::priority_queue&lt; <a class="el" href="classSendMessageRequest.html">SendMe
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span></span>  </td>
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -321,8 +313,8 @@ std::priority_queue&lt; <a class="el" href="classSendMessageRequest.html">SendMe
 
 </div>
 </div>
-<a id="a3f14e0e1617f018a63ab32f65cd525a5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3f14e0e1617f018a63ab32f65cd525a5">&#9670;&nbsp;</a></span>message_converter()</h2>
+<a id="a29176df3aa77e74b459135d6e4db195e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a29176df3aa77e74b459135d6e4db195e">&#9670;&nbsp;</a></span>message_converter()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -331,7 +323,7 @@ std::priority_queue&lt; <a class="el" href="classSendMessageRequest.html">SendMe
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt;byte&gt; BleConverter::message_converter </td>
+          <td class="memname">std::vector&lt; byte &gt; BleConverter::message_converter </td>
           <td>(</td>
           <td class="paramtype">std::vector&lt; byte &gt;&#160;</td>
           <td class="paramname"><em>input_message</em></td><td>)</td>
@@ -340,7 +332,7 @@ std::priority_queue&lt; <a class="el" href="classSendMessageRequest.html">SendMe
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span></span>  </td>
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -356,7 +348,8 @@ std::priority_queue&lt; <a class="el" href="classSendMessageRequest.html">SendMe
 
 </div>
 </div>
-<hr/>The documentation for this class was generated from the following file:<ul>
+<hr/>The documentation for this class was generated from the following files:<ul>
+<li><a class="el" href="BleConverter_8h_source.html">BleConverter.h</a></li>
 <li>BleConverter.cpp</li>
 </ul>
 </div><!-- contents -->
