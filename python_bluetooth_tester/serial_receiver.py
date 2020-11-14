@@ -1,7 +1,7 @@
 import serial
 from time import time
 
-ser = serial.Serial('/dev/ttyACM0', baudrate=115200)
+ser = serial.Serial('/dev/ttyACM0', baudrate=9600)
 
 data = b''
 pkg_len = 5

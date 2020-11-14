@@ -10,7 +10,7 @@ def crc(pcBlock, len):
                 crc = (crc << 1) ^ 0x31
             else:
                 crc = crc << 1
-    return crc % 0xFF
+    return crc & 0xFF
 
 
 def message_handler(input_data):
@@ -32,7 +32,7 @@ def message_handler(input_data):
     result_message = [0xFF, 0x02, 0x14, 0x00, 0x00]
     command = (message[2] << 7) + message[3]
     result_message[3] = command & 0xFF # Только младший байт команды.
-    result_message[4] = crc(result_message, 4)
+    result_message[4] = crc(result_message.copy(), 4)
 
     print(f"\nНовое сообщение {bytes(result_message)}")
     print(f"Его байты {result_message}")
