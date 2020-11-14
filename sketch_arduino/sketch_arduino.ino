@@ -10,35 +10,53 @@ const int input_message_length = 5;
 const int output_message_length = 5;
 
 
-/* This value determines the size of the forwarding message queue. 
- *  If there is not enough space for a new message, 
- *  it will be dropped. When space becomes available, 
- *  the newest message will be recorded.
+/*! 
+    /brief Размер очереди входящих по BLE сообщений.
+
+    Это значение определяет размер очереди сообщений
+    на пересылку.
+    Если на новое сообщение не будет места, оно будет
+    пропущено. Как только появится свободное место,
+    самое новое не использованное сообщение будет 
+    записано из очереди.
+    Если программе не хватает оперативной
+    памяти, можно уменьшить это значение.
  */
 const int priority_queue_max_size = 16;
 
-/* Amount of messages in the queue for conversion and sending.
- * In case of memory overflow, reduce.
- * It's still must be at least as input_message_length size.
+/*!
+    \brief Количество сообщений в очереди на преобразование и отправку.
+
+    В случае переполненря опервтивной памяти - снизить.
+    Это значение всё равно должно быть
+    не меньше input_message_length.
  */
 const int Ble_data_size = 16;
 
-const uint64_t Serial_send_delay = 100; // milliseconds.
+// \brief миллисекунды.
+const uint64_t Serial_send_delay = 100;
 
 
-// Input message buffer.
+// \brief Буфер входящих сообщений.
 byte Ble_messages[Ble_data_size];
 
-// Pointer to the end of the buffer. (Simplest dynamic array)
+/*! 
+    \brief Узазатель на конец буфера
+
+    Простейшие динамический массив.
+*/
 int Ble_input_pointer = 0;
 
 
-/*
- * Solving problem with timer overflow after ~3 years.
- * Now it will survive our galaxy.
- */
 uint64_t current_time = 0;
 uint32_t prev_HAL_Tick = 0;
+/*!
+    \brief Фугкция, возвращающая количество миллисекунд с момента старта программы.
+
+    Решение проблемы с переполнением таймера
+    примерно после 3 лет непревной работы.
+    Теперь этот код переживёт плату, на которой запущен.
+ */
 uint64_t get_millis(){
   uint32_t current_HAL_Tick = HAL_GetTick();
   uint32_t add_time = current_HAL_Tick - prev_HAL_Tick;
@@ -48,8 +66,10 @@ uint64_t get_millis(){
 }
 
 
-/* Function for calculating hash sum.
- * Logic was set initially.
+/*!
+    \brief Функция для вычисления хэш суммы
+
+    Логика былп задана изначально.
  */
 char crc(unsigned char *pcBlock, int len)
 {
@@ -63,14 +83,15 @@ char crc(unsigned char *pcBlock, int len)
     return crc;
 }
 
-// Comparator for priority queue
+// \brief Компаратор для очереди с преоритетом.
 auto cmp = [](SendMessageRequest a, SendMessageRequest b) { return a.get_send_time() > b.get_send_time(); };
-// Queue of requests to send messages.
+// \brief Очередь запросов на отправку сообщений.
 std::priority_queue<SendMessageRequest, std::deque<SendMessageRequest>, decltype(cmp)> Ble_send_queue(cmp);
 
-/*
- * Сonvertint an input message to an output message. 
- * Made separately to make changes convenient.
+/*!
+    \brief Функция для преобразования входящего сообщения в выходящее.
+
+    Вынесена отдельно с целью удобства внесения изменений.
  */
 std::vector<byte> message_converter(std::vector<byte> input_message){
   std::vector<byte> result(output_message_length);
@@ -85,9 +106,11 @@ std::vector<byte> message_converter(std::vector<byte> input_message){
 }
 
 
-/*
- * New symbol handler. 
- * It was made as a separate function in order to save CPU time.
+/*!
+    \brief Обработчик новых символов.
+
+    Сделано отдельной функцией с целью экономии
+    процессорного времени.
  */
 void Ble_update_sym(byte symbol){
   if (symbol & 0x80){
@@ -101,9 +124,10 @@ void Ble_update_sym(byte symbol){
 }
 
 
-/*
- * Priority queue for requests to send messages update operation.
- */
+/*!
+    \brief Функция обновления очереди с преоритетом
+    для запросов на отправку сообщений.
+*/
 void Ble_update_send_queue(){
   current_time = get_millis();
   std::vector<byte> message_to_send(input_message_length);
@@ -130,10 +154,7 @@ void Ble_update_send_queue(){
 }
 
 
-/*
- * The operation of sending the first valid message 
- * from the priority queue, to which the time has come.
- */
+// \brief Операция отправки первого сообщения, чья очередь дошла.
 void Ble_send_one_message(){
   if (Ble_send_queue.empty())
     return;
@@ -158,7 +179,11 @@ void Ble_send_one_message(){
 
 
 /*
- * Whole program initialization function. 
+    \brief Операция инициализации преобразователя BLE сообщений в Serial..
+
+    Она была вынесенв из setup() с целью
+    Упрощения процесса вставки 
+* Whole program initialization function. 
  * It was moved out from setup() 
  * for esier integration into existing code.
  */
