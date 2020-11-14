@@ -1,0 +1,166 @@
+\hypertarget{classBleConverter}{}\section{Ble\+Converter Class Reference}
+\label{classBleConverter}\index{Ble\+Converter@{Ble\+Converter}}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structBleConverter_1_1CustomCompare}{Custom\+Compare}
+\begin{DoxyCompactList}\small\item\em Компаратор для очереди с приоритетом. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classBleConverter_ab0ee446cd405424a643832588b71c765}\label{classBleConverter_ab0ee446cd405424a643832588b71c765}} 
+void \hyperlink{classBleConverter_ab0ee446cd405424a643832588b71c765}{Ble\+Serial\+\_\+cycle} ()
+\begin{DoxyCompactList}\small\item\em Один цикл работы программы.  Он была вынесен из loop() с целью Упрощения процесса использования кода. \end{DoxyCompactList}\item 
+\hyperlink{classBleConverter_a15863f36b3c75a32e5d1861b60b3aecc}{Ble\+Converter} (int Serial\+Baudrate, int Ble\+Baudrate, int Ble\+Rx\+Pin, int Ble\+Tx\+Pin)
+\begin{DoxyCompactList}\small\item\em Операция инициализации преобразователя B\+LE сообщений в Serial.  Она была вынесенв из setup() в конструктор с целью Упрощения процесса использования кода. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+uint64\+\_\+t \hyperlink{classBleConverter_a52ed15bca443802f8c3c5e2fdde0b82e}{get\+\_\+millis} ()
+\begin{DoxyCompactList}\small\item\em Функция, возвращающая количество миллисекунд с момента старта программы.  Решение проблемы с переполнением таймера примерно после 3 лет непрерывной работы. Теперь этот код переживёт плату, на которой запущен. \end{DoxyCompactList}\item 
+char \hyperlink{classBleConverter_a232fa1dd4c43d37201656235bde26173}{crc} (unsigned char $\ast$pc\+Block, int len)
+\begin{DoxyCompactList}\small\item\em Функция для вычисления хэш суммы.  Логика была задана изначально. \end{DoxyCompactList}\item 
+std\+::vector$<$ byte $>$ \hyperlink{classBleConverter_a3f14e0e1617f018a63ab32f65cd525a5}{message\+\_\+converter} (std\+::vector$<$ byte $>$ input\+\_\+message)
+\begin{DoxyCompactList}\small\item\em Функция для преобразования входящего сообщения в выходящее.  Вынесена отдельно с целью удобства внесения изменений. \end{DoxyCompactList}\item 
+void \hyperlink{classBleConverter_a9c8be58a0630f113cc98d1163aebc0fa}{Ble\+\_\+update\+\_\+sym} (byte symbol)
+\begin{DoxyCompactList}\small\item\em Обработчик новых символов.  Сделано отдельной функцией с целью экономии процессорного времени. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classBleConverter_a46793fb8aa5d69ddd6fe7a1da2198130}\label{classBleConverter_a46793fb8aa5d69ddd6fe7a1da2198130}} 
+void \hyperlink{classBleConverter_a46793fb8aa5d69ddd6fe7a1da2198130}{Ble\+\_\+update\+\_\+send\+\_\+queue} ()
+\begin{DoxyCompactList}\small\item\em Функция обновления очереди с приоритетом для запросов на отправку сообщений. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classBleConverter_a966f12ea117f813e474d1ee0f213ec52}\label{classBleConverter_a966f12ea117f813e474d1ee0f213ec52}} 
+void \hyperlink{classBleConverter_a966f12ea117f813e474d1ee0f213ec52}{Ble\+\_\+send\+\_\+one\+\_\+message} ()
+\begin{DoxyCompactList}\small\item\em Операция отправки первого сообщения, чья очередь дошла. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classBleConverter_acf02518f93d5ece7784338e285a5d857}\label{classBleConverter_acf02518f93d5ece7784338e285a5d857}} 
+Software\+Serial $\ast$ {\bfseries Ble\+Serial}
+\item 
+\mbox{\Hypertarget{classBleConverter_adc02237a5cd942227b74bdb8f140b148}\label{classBleConverter_adc02237a5cd942227b74bdb8f140b148}} 
+const int \hyperlink{classBleConverter_adc02237a5cd942227b74bdb8f140b148}{input\+\_\+message\+\_\+length} = 5
+\begin{DoxyCompactList}\small\item\em Размер входящего по Ble сообщения. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classBleConverter_af39c173eb10e2bcf24786cd5a11672db}\label{classBleConverter_af39c173eb10e2bcf24786cd5a11672db}} 
+const int \hyperlink{classBleConverter_af39c173eb10e2bcf24786cd5a11672db}{output\+\_\+message\+\_\+length} = 5
+\begin{DoxyCompactList}\small\item\em Размер выходящего по Serial сообщения. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classBleConverter_aa2e5768adfddbecd88be6f7ee5836ea2}\label{classBleConverter_aa2e5768adfddbecd88be6f7ee5836ea2}} 
+const int \hyperlink{classBleConverter_aa2e5768adfddbecd88be6f7ee5836ea2}{priority\+\_\+queue\+\_\+max\+\_\+size} = 16
+\begin{DoxyCompactList}\small\item\em Размер очереди входящих по B\+LE сообщений.  Это значение определяет размер очереди сообщений на пересылку. Если на новое сообщение не будет места, оно будет пропущено. Как только появится свободное место, самое новое не использованное сообщение будет записано из очереди. Если программе не хватает оперативной памяти, можно уменьшить это значение. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classBleConverter_a4f0a23dfe1c6a258e9b08d92eae7f7f3}\label{classBleConverter_a4f0a23dfe1c6a258e9b08d92eae7f7f3}} 
+const int \hyperlink{classBleConverter_a4f0a23dfe1c6a258e9b08d92eae7f7f3}{Ble\+\_\+data\+\_\+size} = 16
+\begin{DoxyCompactList}\small\item\em Количество символов в очереди на преобразование и отправку.  В случае переполнения оперативной памяти -\/ снизить. Это значение всё равно должно быть не меньше input\+\_\+message\+\_\+length. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classBleConverter_ab8e7df0a0789cc885f22fc9cd5e24983}\label{classBleConverter_ab8e7df0a0789cc885f22fc9cd5e24983}} 
+const uint64\+\_\+t \hyperlink{classBleConverter_ab8e7df0a0789cc885f22fc9cd5e24983}{Serial\+\_\+send\+\_\+delay} = 100
+\begin{DoxyCompactList}\small\item\em миллисекунды. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classBleConverter_adf91c547fda6b9a0a3e4d521a44050c4}\label{classBleConverter_adf91c547fda6b9a0a3e4d521a44050c4}} 
+std\+::vector$<$ byte $>$ \hyperlink{classBleConverter_adf91c547fda6b9a0a3e4d521a44050c4}{Ble\+\_\+messages}
+\begin{DoxyCompactList}\small\item\em Буфер входящих сообщений. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classBleConverter_a84fbadc2b74045acb04c19a894de6fa8}\label{classBleConverter_a84fbadc2b74045acb04c19a894de6fa8}} 
+int \hyperlink{classBleConverter_a84fbadc2b74045acb04c19a894de6fa8}{Ble\+\_\+input\+\_\+pointer} = 0
+\begin{DoxyCompactList}\small\item\em Указатель на конец буфера  Простейшие динамический массив. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classBleConverter_a57c959ab369b9118556104000c36f29a}\label{classBleConverter_a57c959ab369b9118556104000c36f29a}} 
+uint64\+\_\+t {\bfseries current\+\_\+time} = 0
+\item 
+\mbox{\Hypertarget{classBleConverter_a6baed44f9952aa6adfd16963ed74007b}\label{classBleConverter_a6baed44f9952aa6adfd16963ed74007b}} 
+uint32\+\_\+t {\bfseries prev\+\_\+\+H\+A\+L\+\_\+\+Tick} = 0
+\item 
+\mbox{\Hypertarget{classBleConverter_a4ed355811c8a8dae18af243e0e9775e8}\label{classBleConverter_a4ed355811c8a8dae18af243e0e9775e8}} 
+std\+::priority\+\_\+queue$<$ \hyperlink{classSendMessageRequest}{Send\+Message\+Request}, std\+::deque$<$ \hyperlink{classSendMessageRequest}{Send\+Message\+Request} $>$, \hyperlink{structBleConverter_1_1CustomCompare}{Custom\+Compare} $>$ \hyperlink{classBleConverter_a4ed355811c8a8dae18af243e0e9775e8}{Ble\+\_\+send\+\_\+queue}
+\begin{DoxyCompactList}\small\item\em Очередь запросов на отправку сообщений. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classBleConverter_a15863f36b3c75a32e5d1861b60b3aecc}\label{classBleConverter_a15863f36b3c75a32e5d1861b60b3aecc}} 
+\index{Ble\+Converter@{Ble\+Converter}!Ble\+Converter@{Ble\+Converter}}
+\index{Ble\+Converter@{Ble\+Converter}!Ble\+Converter@{Ble\+Converter}}
+\subsubsection{\texorpdfstring{Ble\+Converter()}{BleConverter()}}
+{\footnotesize\ttfamily Ble\+Converter\+::\+Ble\+Converter (\begin{DoxyParamCaption}\item[{int}]{Serial\+Baudrate,  }\item[{int}]{Ble\+Baudrate,  }\item[{int}]{Ble\+Rx\+Pin,  }\item[{int}]{Ble\+Tx\+Pin }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Операция инициализации преобразователя B\+LE сообщений в Serial.  Она была вынесенв из setup() в конструктор с целью Упрощения процесса использования кода. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em Serial\+Baudrate} & Частота работы U\+A\+RT B\+LE. Для H\+M-\/10 -\/ 9600. \\
+\hline
+\mbox{\tt in}  & {\em Ble\+Baudrate} & Частота работы Serial U\+A\+RT. \\
+\hline
+\mbox{\tt in}  & {\em Ble\+Rx\+Pin} & Номер пина RX U\+A\+RT B\+LE. \\
+\hline
+\mbox{\tt in}  & {\em Ble\+Tx\+Pin} & Номер пина TX U\+A\+RT B\+LE. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classBleConverter_a9c8be58a0630f113cc98d1163aebc0fa}\label{classBleConverter_a9c8be58a0630f113cc98d1163aebc0fa}} 
+\index{Ble\+Converter@{Ble\+Converter}!Ble\+\_\+update\+\_\+sym@{Ble\+\_\+update\+\_\+sym}}
+\index{Ble\+\_\+update\+\_\+sym@{Ble\+\_\+update\+\_\+sym}!Ble\+Converter@{Ble\+Converter}}
+\subsubsection{\texorpdfstring{Ble\+\_\+update\+\_\+sym()}{Ble\_update\_sym()}}
+{\footnotesize\ttfamily void Ble\+Converter\+::\+Ble\+\_\+update\+\_\+sym (\begin{DoxyParamCaption}\item[{byte}]{symbol }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+
+
+Обработчик новых символов.  Сделано отдельной функцией с целью экономии процессорного времени. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em symbol} & Новый символ, пришедший по Ble. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classBleConverter_a232fa1dd4c43d37201656235bde26173}\label{classBleConverter_a232fa1dd4c43d37201656235bde26173}} 
+\index{Ble\+Converter@{Ble\+Converter}!crc@{crc}}
+\index{crc@{crc}!Ble\+Converter@{Ble\+Converter}}
+\subsubsection{\texorpdfstring{crc()}{crc()}}
+{\footnotesize\ttfamily char Ble\+Converter\+::crc (\begin{DoxyParamCaption}\item[{unsigned char $\ast$}]{pc\+Block,  }\item[{int}]{len }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+
+
+Функция для вычисления хэш суммы.  Логика была задана изначально. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em $\ast$pc\+Block} & Входной массив, хэш которого нужно найти. \\
+\hline
+\mbox{\tt in}  & {\em len} & Длина входного массива. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+8 бит результата хэш суммы. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classBleConverter_a52ed15bca443802f8c3c5e2fdde0b82e}\label{classBleConverter_a52ed15bca443802f8c3c5e2fdde0b82e}} 
+\index{Ble\+Converter@{Ble\+Converter}!get\+\_\+millis@{get\+\_\+millis}}
+\index{get\+\_\+millis@{get\+\_\+millis}!Ble\+Converter@{Ble\+Converter}}
+\subsubsection{\texorpdfstring{get\+\_\+millis()}{get\_millis()}}
+{\footnotesize\ttfamily uint64\+\_\+t Ble\+Converter\+::get\+\_\+millis (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+
+
+Функция, возвращающая количество миллисекунд с момента старта программы.  Решение проблемы с переполнением таймера примерно после 3 лет непрерывной работы. Теперь этот код переживёт плату, на которой запущен. 
+
+\begin{DoxyReturn}{Returns}
+uint64\+\_\+t Миллисекунды с момента старта программы. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classBleConverter_a3f14e0e1617f018a63ab32f65cd525a5}\label{classBleConverter_a3f14e0e1617f018a63ab32f65cd525a5}} 
+\index{Ble\+Converter@{Ble\+Converter}!message\+\_\+converter@{message\+\_\+converter}}
+\index{message\+\_\+converter@{message\+\_\+converter}!Ble\+Converter@{Ble\+Converter}}
+\subsubsection{\texorpdfstring{message\+\_\+converter()}{message\_converter()}}
+{\footnotesize\ttfamily std\+::vector$<$byte$>$ Ble\+Converter\+::message\+\_\+converter (\begin{DoxyParamCaption}\item[{std\+::vector$<$ byte $>$}]{input\+\_\+message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+
+
+Функция для преобразования входящего сообщения в выходящее.  Вынесена отдельно с целью удобства внесения изменений. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em input\+\_\+message} & Входящее в B\+LE сообщение для преобразования. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Выходящее сообщение, отправляемое по Serial порту. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Ble\+Converter.\+cpp\end{DoxyCompactItemize}

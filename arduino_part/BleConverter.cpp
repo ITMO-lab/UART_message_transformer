@@ -7,7 +7,7 @@
 
 class BleConverter
 {
-  public:
+  protected:
   
   SoftwareSerial *BleSerial;
 
@@ -68,7 +68,7 @@ class BleConverter
   uint64_t current_time = 0;
   uint32_t prev_HAL_Tick = 0;
 
-  
+
   /**
     * @brief Функция, возвращающая количество миллисекунд с момента старта программы.
     * @detailed Решение проблемы с переполнением таймера
@@ -141,7 +141,7 @@ class BleConverter
     return result;
   }
   
-  
+
   /**
     * @brief Обработчик новых символов.
     * @detailed Сделано отдельной функцией с целью экономии
@@ -161,8 +161,8 @@ class BleConverter
       Ble_update_send_queue();
     }
   }
-  
-  
+
+
   /**
     * @brief Функция обновления очереди с приоритетом
     * для запросов на отправку сообщений.
@@ -219,6 +219,7 @@ class BleConverter
   }
 
 
+  public:
   /**
     * @brief Один цикл работы программы.
     * @detailed Он была вынесен из loop() с целью
