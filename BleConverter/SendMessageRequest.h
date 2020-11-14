@@ -1,8 +1,12 @@
 #include <vector>
 
-/*
- * Priority queue item - message to sent.
- */
+
+/**
+  * @brief Класс запроса на отправку сообщения 
+  * по одному из каналов данных.
+  * @detailed В некотором смысле используется 
+  * просто как безопасный аналог struct.
+*/
 class SendMessageRequest{
   public:
 
