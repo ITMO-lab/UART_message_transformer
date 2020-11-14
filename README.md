@@ -56,7 +56,7 @@ https://vk.com/video252833211_456239725
 
 ### Документация в формате Doxygen
 
-
+https://github.com/d3dx13/UART_message_transformer/tree/main/doc/html
 
 
 
