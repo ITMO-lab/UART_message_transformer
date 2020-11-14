@@ -1,5 +1,64 @@
 # UART_message_transformer
 
+### Как запускать?
+
+Если у вас нет stm32 (в трёх разных окнах терминала):
+
+1. ```bash
+   python3 python_prototype_socket/message_receiver.py
+   ```
+
+2. ```bash
+   python3 python_prototype_socket/programm.py
+   ```
+
+3. ```bash
+   python3 python_prototype_socket/message_sender.py
+   ```
+
+Если у вас есть stm32 (команды также в разных окнах терминала):
+
+1. Залейте код `sketch_arduino/sketch_arduino.ino` в микроконтроллер 
+   (например, Nucleo-F031K4).
+
+2. Настройте пины вывода, идущие к ble HM-10 (по умолчанию 2 и 3).
+
+3. ```bash
+   python3 python_bluetooth_tester/bluetooth_and_socket_sender.py
+   ```
+
+4. ```bash
+   python3 python_bluetooth_tester/serial_receiver.py
+   ```
+
+   Опционально можно запустить этот же код на python для сравнения значений:
+
+1. ```bash
+   python3 python_prototype_socket/message_receiver.py
+   ```
+
+2. ```bash
+   python3 python_prototype_socket/programm.py
+   ```
+
+
+
+### Видео тесты
+
+<video src="https://github.com/d3dx13/UART_message_transformer/video/out3sec.mp4"></video>
+
+Частота 1/3 Гц. Тест корректности работы.
+
+
+
+<video src="https://github.com/d3dx13/UART_message_transformer/video/out0.01sec.mp4"></video>
+
+Частота 100 Гц. Тест скорости работы.
+
+
+
+### Задача
+
 **Задача** – сделать прием пакетов по **BT (uart)**, распарсить их по формату, сформировать команду в другом формате и отправить в **uart (9600)**. Использовать свободные ножки микроконтроллера на стенде.
 
 

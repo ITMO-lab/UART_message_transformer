@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ab812831-fe30-4679-acc0-a8c202ec08cc" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/python_bluetooth_tester/bluetooth_and_socket_sender.py" beforeDir="false" afterPath="$PROJECT_DIR$/python_bluetooth_tester/bluetooth_and_socket_sender.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sketch_arduino/sketch_arduino.ino" beforeDir="false" afterPath="$PROJECT_DIR$/sketch_arduino/sketch_arduino.ino" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -14,8 +13,8 @@
   </component>
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/UART_message_transformer$programm.coverage" NAME="programm Coverage Results" MODIFIED="1605262336698" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python_prototype" />
-    <SUITE FILE_PATH="coverage/UART_message_transformer$serial_receiver.coverage" NAME="serial_receiver Coverage Results" MODIFIED="1605312563013" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python_bluetooth_tester" />
-    <SUITE FILE_PATH="coverage/UART_message_transformer$message_sender__1_.coverage" NAME="message_sender (1) Coverage Results" MODIFIED="1605312564908" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python_bluetooth_tester" />
+    <SUITE FILE_PATH="coverage/UART_message_transformer$serial_receiver.coverage" NAME="serial_receiver Coverage Results" MODIFIED="1605312735898" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python_bluetooth_tester" />
+    <SUITE FILE_PATH="coverage/UART_message_transformer$message_sender__1_.coverage" NAME="message_sender (1) Coverage Results" MODIFIED="1605312737436" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python_bluetooth_tester" />
     <SUITE FILE_PATH="coverage/UART_message_transformer$programm__1_.coverage" NAME="programm (1) Coverage Results" MODIFIED="1605307324953" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python_prototype_socket" />
     <SUITE FILE_PATH="coverage/UART_message_transformer$message_sender.coverage" NAME="message_sender Coverage Results" MODIFIED="1605262338576" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python_prototype" />
     <SUITE FILE_PATH="coverage/UART_message_transformer$message_receiver.coverage" NAME="message_receiver Coverage Results" MODIFIED="1605309145942" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python_prototype_socket" />
@@ -25,8 +24,8 @@
       <file leaf-file-name="bluetooth_and_socket_sender.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/python_bluetooth_tester/bluetooth_and_socket_sender.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="495">
-              <caret line="33" column="35" lean-forward="true" selection-start-line="33" selection-start-column="35" selection-end-line="33" selection-end-column="35" />
+            <state relative-caret-position="375">
+              <caret line="25" column="24" selection-start-line="25" selection-start-column="24" selection-end-line="25" selection-end-column="24" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
               </folding>
@@ -38,7 +37,7 @@
         <entry file="file://$PROJECT_DIR$/python_bluetooth_tester/serial_receiver.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="105">
-              <caret line="7" column="11" lean-forward="true" selection-start-line="7" selection-start-column="11" selection-end-line="7" selection-end-column="11" />
+              <caret line="7" column="11" selection-start-line="7" selection-start-column="11" selection-end-line="7" selection-end-column="11" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -80,7 +79,7 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-1" />
     <option name="y" value="-1" />
     <option name="width" value="1922" />
@@ -276,8 +275,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1" y="-1" width="1922" height="1058" extended-state="0" />
-    <editor active="true" />
+    <frame x="-1" y="-1" width="1922" height="1058" extended-state="7" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.50106955" side_tool="true" weight="0.32897604" />
@@ -463,8 +461,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/python_bluetooth_tester/bluetooth_and_socket_sender.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="33" column="35" lean-forward="true" selection-start-line="33" selection-start-column="35" selection-end-line="33" selection-end-column="35" />
+        <state relative-caret-position="375">
+          <caret line="25" column="24" selection-start-line="25" selection-start-column="24" selection-end-line="25" selection-end-column="24" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
           </folding>
@@ -474,7 +472,7 @@
     <entry file="file://$PROJECT_DIR$/python_bluetooth_tester/serial_receiver.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
-          <caret line="7" column="11" lean-forward="true" selection-start-line="7" selection-start-column="11" selection-end-line="7" selection-end-column="11" />
+          <caret line="7" column="11" selection-start-line="7" selection-start-column="11" selection-end-line="7" selection-end-column="11" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>
