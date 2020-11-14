@@ -45,13 +45,15 @@
 
 ### Видео тесты
 
-<iframe src="//vk.com/video_ext.php?oid=252833211&id=456239726&hash=620ad2ddf2b75371&hd=4" width="1920" height="1080" frameborder="0" allowfullscreen></iframe>
+
+
+https://vk.com/video252833211_456239726
 
 Частота 1/3 Гц. Тест корректности работы.
 
 
 
-<iframe src="//vk.com/video_ext.php?oid=252833211&id=456239725&hash=78c09648ecbd9fb5&hd=4" width="1920" height="1080" frameborder="0" allowfullscreen></iframe>
+https://vk.com/video252833211_456239725
 
 Частота 100 Гц. Тест скорости работы.
 
