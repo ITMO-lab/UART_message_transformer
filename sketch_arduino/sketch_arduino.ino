@@ -80,8 +80,7 @@ std::vector<byte> message_converter(std::vector<byte> input_message){
   result[3] = (input_message[2] << 7) | input_message[3];
   byte result_for_hash[4];
   std::copy(result.begin(), result.end(), result_for_hash);
-  //result[4] = crc(result_for_hash, 4);
-  result[4] = (byte)Ble_send_queue.size();
+  result[4] = crc(result_for_hash, 4);
   return result;
 }
 
@@ -100,7 +99,6 @@ void Ble_update_sym(byte symbol){
     Ble_update_send_queue();
   }
 }
-
 
 
 /*
@@ -137,6 +135,8 @@ void Ble_update_send_queue(){
  * from the priority queue, to which the time has come.
  */
 void Ble_send_one_message(){
+  if (Ble_send_queue.empty())
+    return;
   current_time = get_millis();
   SendMessageRequest message_request = Ble_send_queue.top();
   if (current_time < message_request.get_send_time()){
