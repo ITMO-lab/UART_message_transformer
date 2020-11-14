@@ -45,13 +45,13 @@
 
 ### Видео тесты
 
-<video src="https://github.com/d3dx13/UART_message_transformer/video/out3sec.mp4"></video>
+<video src="https://vk.com/video252833211_456239724"></video>
 
 Частота 1/3 Гц. Тест корректности работы.
 
 
 
-<video src="https://github.com/d3dx13/UART_message_transformer/video/out0.01sec.mp4"></video>
+<video src="https://vk.com/video252833211_456239725"></video>
 
 Частота 100 Гц. Тест скорости работы.
 
