@@ -10,9 +10,12 @@
 
 class BleConverter
 {
-  protected:
+  public:
   
   SoftwareSerial *BleSerial;
+  SoftwareSerial *ProsthesisSerial;
+
+  protected:
 
   /**
     * @brief Размер входящего по Ble сообщения.
@@ -152,12 +155,14 @@ class BleConverter
     * @brief Операция инициализации преобразователя BLE сообщений в Serial.
     * @detailed Она была вынесенв из setup() в конструктор с целью
     * Упрощения процесса использования кода.
-    * @param[in] SerialBaudrate Частота работы UART BLE. Для HM-10 - 9600.
-    * @param[in] BleBaudrate Частота работы Serial UART.
+    * @param[in] SerialRxPin Номер пина RX UART протеза.
+    * @param[in] SerialTxPin Номер пина TX UART протеза.
+    * @param[in] SerialBaudrate Частота работы UART протеза.
     * @param[in] BleRxPin Номер пина RX UART BLE.
     * @param[in] BleTxPin Номер пина TX UART BLE.
+    * @param[in] BleBaudrate Частота работы UART BLE. Для HM-10 - 9600.
   */
-  BleConverter(int SerialBaudrate, int BleBaudrate, int BleRxPin, int BleTxPin);
+  BleConverter(int SerialRxPin, int SerialTxPin, int SerialBaudrate, int BleRxPin, int BleTxPin, int BleBaudrate);
 };
 
 #endif

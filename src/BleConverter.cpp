@@ -88,14 +88,14 @@ void BleConverter::Ble_send_one_message(){
     return;
   }
   std::vector<byte> message_bytes = message_request.get_message();
-  if (message_request.is_software_serial()){
+  if (message_request.is_ble_serial()){
     for (int i = 0; i < input_message_length; i++){
       BleSerial->write(message_bytes[i]);
     }
   }
   else {
     for (int i = 0; i < output_message_length; i++){
-      Serial.write(message_bytes[i]);
+      ProsthesisSerial->write(message_bytes[i]);
     }
   }
   Ble_send_queue.pop();
@@ -110,9 +110,10 @@ void BleConverter::BleSerial_cycle(){
 }
 
 
-BleConverter::BleConverter(int SerialBaudrate, int BleBaudrate, int BleRxPin, int BleTxPin){
+BleConverter::BleConverter(int SerialRxPin, int SerialTxPin, int SerialBaudrate, int BleRxPin, int BleTxPin, int BleBaudrate){
   Ble_messages.reserve(Ble_data_size);
+  ProsthesisSerial = new SoftwareSerial(SerialRxPin, SerialTxPin);
+  ProsthesisSerial->begin(SerialBaudrate);
   BleSerial = new SoftwareSerial(BleRxPin, BleTxPin);
   BleSerial->begin(BleBaudrate);
-  Serial.begin(SerialBaudrate);
 }
